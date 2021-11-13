@@ -13,9 +13,7 @@ class TagListAPIView(ListAPIView):
 
 
 class PostListAPIView(ListAPIView):
-    page_size = 8
     serializer_class = PostSerializer
-    pagination_class = PageNumberPagination
     queryset = Post.objects.all()
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['tags']
