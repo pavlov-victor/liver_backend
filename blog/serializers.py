@@ -10,6 +10,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=True)
     class Meta:
         model = Post
         fields = '__all__'
