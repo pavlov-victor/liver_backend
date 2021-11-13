@@ -16,6 +16,6 @@ class PostTagAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-    summernote_fields = '__all__'
+    summernote_fields = ['body']
     filter_horizontal = ('tags',)
     inlines = [ForeignPostInline]
