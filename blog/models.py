@@ -23,6 +23,7 @@ class Post(models.Model):
     title = models.CharField('Заголовок статьи', max_length=200)
     title_image = models.ImageField('Изображение для новости', upload_to='posts/images')
     body = models.TextField('Текст новости')
+    description = models.TextField('Превью статьи', max_length=200, default='')
     created = models.DateTimeField('Время создания', auto_now_add=True)
 
     def __str__(self):
