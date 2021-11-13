@@ -32,3 +32,8 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+
+class ForeignPost(models.Model):
+    parent = models.ForeignKey('Post', models.CASCADE, related_name='foreign_posts')
+    foreign = models.ForeignKey('Post', models.CASCADE, related_name='parent_posts')
