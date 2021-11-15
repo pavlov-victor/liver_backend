@@ -16,11 +16,12 @@ class PostRelativeSerializer(serializers.ModelSerializer):
         model = Post
         fields = ['title', 'id', 'description', 'tags']
 
-
 class PostSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True)
-    foreign_posts = PostRelativeSerializer(many=True)
-    parent_posts = PostRelativeSerializer(many=True)
+    foreign_posts = serializers.SerializerMethodField()
+
+    def get_foreign_posts(self, obj: Post):
+        return PostRelativeSerializer([x.foreign for x in obj.foreign_posts.all()], many=True).data
 
     class Meta:
         model = Post
