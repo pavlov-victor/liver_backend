@@ -2,8 +2,13 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 import django_filters.rest_framework
 
-from blog.models import Post, PostTag
-from blog.serializers import TagSerializer, PostSerializer
+from blog.models import Post, PostTag, Volunteer
+from blog.serializers import TagSerializer, PostSerializer, VolunteerSerializer
+
+
+class VolunteerListAPIView(ListAPIView):
+    queryset = Volunteer.objects.all()
+    serializer_class = VolunteerSerializer
 
 
 class TagListAPIView(ListAPIView):

@@ -37,3 +37,15 @@ class Post(models.Model):
 class ForeignPost(models.Model):
     parent = models.ForeignKey('Post', models.CASCADE, related_name='foreign_posts')
     foreign = models.ForeignKey('Post', models.CASCADE, related_name='parent_posts')
+
+class Volunteer(models.Model):
+    name = models.CharField('Имя', max_length=200)
+    price = models.IntegerField('Цена')
+    description = models.TextField('Заметка')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Волонтер'
+        verbose_name_plural = 'Волонтеры'
